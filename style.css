@@ -66,6 +66,10 @@ main {
     position: sticky;
     top: 0;
     z-index: 100;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .navbar .container {
@@ -87,6 +91,8 @@ main {
     height: 48px;
     width: auto;
     filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 1));
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
 .logo h1 {
@@ -111,11 +117,18 @@ main {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    cursor: pointer;
+    -webkit-user-drag: none;
 }
 
-.nav-menu a:hover,
+.nav-menu a:hover {
+    color: #e8c49a;
+}
+
 .nav-menu a.active {
     color: #d4a574;
+    text-decoration: underline;
+    text-underline-offset: 10px;
 }
 
 /* Hero Section */
