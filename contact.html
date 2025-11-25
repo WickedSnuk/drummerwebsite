@@ -7,16 +7,17 @@
     <link rel="icon" type="image/png" href="icons/drumsticksicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="contact-page">
     <header>
         <nav class="navbar">
             <div class="container">
-                <div class="logo">
-                    <img src="icons/drumseticon.png" alt="Drumset" class="logo-icon">
-                    <h1>Practico</h1>
-                </div>
+                <a href="index.html" class="logo-link">
+                    <div class="logo">
+                        <img src="icons/drumseticon.png" alt="Drumset" class="logo-icon">
+                        <h1>Practico</h1>
+                    </div>
+                </a>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
@@ -35,6 +36,7 @@
                     <input type="email" placeholder="Your Email" class="form-input">
                     <textarea placeholder="Your Message" class="form-input" rows="5"></textarea>
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div id="form-message" class="form-message"></div>
                 </form>
             </div>
         </section>
@@ -45,6 +47,13 @@
             <p>&copy; 2025 Practico. All rights reserved.</p>
         </div>
     </footer>
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Email Functionality Scripts -->
+    <script src="emailSending/emailService.js"></script>
+    <script src="emailSending/emailValidator.js"></script>
+    <script src="emailSending/formHandler.js"></script>
+    <!-- Navigation Script -->
     <script src="navigation.js"></script>
 </body>
 </html>

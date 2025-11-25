@@ -25,6 +25,18 @@ main {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+main::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Contact Page - No scrollbar at all */
+.contact-page main {
+    overflow: hidden;
 }
 
 /* Custom Scrollbar Styling */
@@ -78,6 +90,17 @@ main {
     align-items: center;
     padding: 1rem 20px;
     min-height: 70px;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.logo-link:active {
+    transform: scale(0.95);
 }
 
 .logo {
@@ -339,6 +362,65 @@ textarea.form-input {
     resize: vertical;
 }
 
+.form-message {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-message.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    display: block;
+}
+
+.form-message.success {
+    background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.form-message.success::before {
+    content: '✅ ';
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+}
+
+.form-message.error {
+    background: linear-gradient(135deg, #e57373 0%, #ef5350 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+}
+
+.form-message.error::before {
+    content: '❌ ';
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+}
+
+.form-message.info {
+    background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+.form-message.info::before {
+    content: '📧 ';
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+}
+
 /* Footer */
 footer {
     background: linear-gradient(180deg, #8b6f47 0%, #613a03 100%);
@@ -411,6 +493,43 @@ footer p {
 
 .animate-delay-6 {
     animation-delay: 0.6s;
+}
+
+/* Popup Notifications */
+.popup-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: 400px;
+}
+
+.popup-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.popup-notification.popup-success {
+    background: #4caf50;
+    color: white;
+}
+
+.popup-notification.popup-error {
+    background: #f44336;
+    color: white;
+}
+
+.popup-notification.popup-info {
+    background: #2196f3;
+    color: white;
 }
 
 /* Responsive Design */
