@@ -31,8 +31,51 @@
     <main>
         <section class="section">
             <div class="container">
-                <h2 class="section-title">Metronome</h2>
-                <!-- Content will be added here -->
+                <h2 class="section-title animate-fade-in">Metronome</h2>
+                
+                <div class="metronome-container animate-fade-in animate-delay-2">
+                    <!-- Visual Beat Indicator -->
+                    <div class="beat-indicator" id="beatIndicator">
+                        <div class="beat-light">
+                            <span class="beat-number" id="beatNumber">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- BPM Display -->
+                    <div class="bpm-display">
+                        <span class="bpm-value" id="bpmValue">120</span>
+                        <span class="bpm-label">BPM</span>
+                    </div>
+                    
+                    <!-- BPM Controls -->
+                    <div class="bpm-controls">
+                        <button class="bpm-btn" id="decreaseBpm" title="Decrease BPM">-</button>
+                        <input type="range" id="bpmSlider" class="bpm-slider" min="40" max="240" value="120" step="1">
+                        <button class="bpm-btn" id="increaseBpm" title="Increase BPM">+</button>
+                    </div>
+                    
+                    <!-- Time Signature -->
+                    <div class="time-signature">
+                        <label for="beatsPerMeasure">Beats per Measure:</label>
+                        <select id="beatsPerMeasure" class="time-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4" selected>4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Control Buttons -->
+                    <div class="metronome-controls">
+                        <button class="metronome-btn start-btn" id="startStopBtn">
+                            <span id="btnText">Start</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -43,5 +86,6 @@
         </div>
     </footer>
     <script src="navigation.js"></script>
+    <script src="metronome.js"></script>
 </body>
 </html>
