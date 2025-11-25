@@ -24,8 +24,16 @@ class Metronome {
         this.beatIndicator = document.getElementById('beatIndicator');
         this.beatNumber = document.getElementById('beatNumber');
         this.beatsPerMeasureSelect = document.getElementById('beatsPerMeasure');
+        this.multiIndicator = document.getElementById('multiIndicator');
+        this.multiCircles = document.getElementById('multiCircles');
+        this.indicatorToggleBtn = document.getElementById('indicatorToggleBtn');
+        this.toggleIcon = document.getElementById('toggleIcon');
+        
+        // Indicator mode: 'single' or 'multi'
+        this.indicatorMode = 'single';
         
         this._initializeEventListeners();
+        this._generateMultiCircles();
     }
     
     _initializeEventListeners() {
@@ -40,10 +48,14 @@ class Metronome {
         // Time Signature
         this.beatsPerMeasureSelect.addEventListener('change', (e) => {
             this.beatsPerMeasure = parseInt(e.target.value);
+            this._generateMultiCircles();
             if (this.isPlaying) {
                 this.currentBeat = 0;
             }
         });
+        
+        // Indicator Toggle
+        this.indicatorToggleBtn.addEventListener('click', () => this._toggleIndicator());
         
         // Stop metronome when leaving the page
         window.addEventListener('pagehide', () => {
@@ -67,6 +79,47 @@ class Metronome {
     
     _changeBPM(delta) {
         this._updateBPM(this.bpm + delta);
+    }
+    
+    _toggleIndicator() {
+        if (this.indicatorMode === 'single') {
+            this.indicatorMode = 'multi';
+            this.beatIndicator.classList.remove('active-indicator');
+            this.multiIndicator.classList.add('active-indicator');
+            this.toggleIcon.textContent = '●';
+        } else {
+            this.indicatorMode = 'single';
+            this.multiIndicator.classList.remove('active-indicator');
+            this.beatIndicator.classList.add('active-indicator');
+            this.toggleIcon.textContent = '●●●';
+        }
+        
+        // Clear any active states if not playing
+        if (!this.isPlaying) {
+            this.beatIndicator.classList.remove('active', 'accent');
+            this.beatNumber.textContent = '-';
+            this._clearMultiCircles();
+        }
+    }
+    
+    _generateMultiCircles() {
+        this.multiCircles.innerHTML = '';
+        for (let i = 1; i <= this.beatsPerMeasure; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'beat-circle';
+            circle.setAttribute('data-beat', i);
+            
+            const inner = document.createElement('div');
+            inner.className = 'beat-circle-inner';
+            
+            circle.appendChild(inner);
+            this.multiCircles.appendChild(circle);
+        }
+    }
+    
+    _clearMultiCircles() {
+        const circles = this.multiCircles.querySelectorAll('.beat-circle');
+        circles.forEach(circle => circle.classList.remove('active', 'accent'));
     }
     
     _togglePlayback() {
@@ -103,9 +156,14 @@ class Metronome {
         this.startStopBtn.classList.remove('active');
         this.btnText.textContent = 'Start';
         
+        // Clear single indicator
         this.beatIndicator.classList.remove('active', 'accent');
-        this.currentBeat = 0;
         this.beatNumber.textContent = '-';
+        
+        // Clear multi-circles
+        this._clearMultiCircles();
+        
+        this.currentBeat = 0;
     }
     
     _scheduler() {
@@ -153,28 +211,60 @@ class Metronome {
     }
     
     _updateVisuals(beatNumber) {
-        // Update beat number inside circle
-        const displayBeat = (beatNumber % this.beatsPerMeasure) + 1;
-        this.beatNumber.textContent = displayBeat;
+        // CRITICAL: Don't update if stopped
+        if (!this.isPlaying) return;
         
-        // Visual indicator
+        const displayBeat = (beatNumber % this.beatsPerMeasure) + 1;
         const isAccent = (beatNumber % this.beatsPerMeasure === 0);
         
-        this.beatIndicator.classList.remove('active', 'accent');
-        
-        // Force reflow to restart animation
-        void this.beatIndicator.offsetWidth;
-        
-        if (isAccent) {
-            this.beatIndicator.classList.add('accent');
-        } else {
-            this.beatIndicator.classList.add('active');
-        }
-        
-        // Remove the class after a short duration
-        setTimeout(() => {
+        if (this.indicatorMode === 'single') {
+            // Update single circle indicator
+            this.beatNumber.textContent = displayBeat;
+            
             this.beatIndicator.classList.remove('active', 'accent');
-        }, 100);
+            
+            // Force reflow to restart animation
+            void this.beatIndicator.offsetWidth;
+            
+            if (isAccent) {
+                this.beatIndicator.classList.add('accent');
+            } else {
+                this.beatIndicator.classList.add('active');
+            }
+            
+            // Remove the class after a short duration
+            setTimeout(() => {
+                if (this.isPlaying) {
+                    this.beatIndicator.classList.remove('active', 'accent');
+                }
+            }, 100);
+        } else {
+            // Update multi-circle indicator
+            const circles = this.multiCircles.querySelectorAll('.beat-circle');
+            
+            // Clear all circles first
+            circles.forEach(circle => circle.classList.remove('active', 'accent'));
+            
+            // Activate current beat circle
+            const currentCircle = this.multiCircles.querySelector(`[data-beat="${displayBeat}"]`);
+            if (currentCircle) {
+                // Force reflow
+                void currentCircle.offsetWidth;
+                
+                if (isAccent) {
+                    currentCircle.classList.add('accent');
+                } else {
+                    currentCircle.classList.add('active');
+                }
+                
+                // Remove the class after a short duration
+                setTimeout(() => {
+                    if (this.isPlaying) {
+                        currentCircle.classList.remove('active', 'accent');
+                    }
+                }, 100);
+            }
+        }
     }
     
     _nextNote() {

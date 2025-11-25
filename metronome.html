@@ -34,10 +34,22 @@
                 <h2 class="section-title animate-fade-in">Metronome</h2>
                 
                 <div class="metronome-container animate-fade-in animate-delay-2">
-                    <!-- Visual Beat Indicator -->
-                    <div class="beat-indicator" id="beatIndicator">
+                    <!-- Indicator Toggle Button -->
+                    <button class="indicator-toggle-btn" id="indicatorToggleBtn" title="Toggle Indicator Style">
+                        <span id="toggleIcon">●●●</span>
+                    </button>
+                    
+                    <!-- Single Circle Indicator -->
+                    <div class="beat-indicator single-indicator active-indicator" id="beatIndicator">
                         <div class="beat-light">
                             <span class="beat-number" id="beatNumber">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Multi-Circle Indicator -->
+                    <div class="beat-indicator multi-indicator" id="multiIndicator">
+                        <div class="multi-circles" id="multiCircles">
+                            <!-- Circles will be generated dynamically -->
                         </div>
                     </div>
                     
