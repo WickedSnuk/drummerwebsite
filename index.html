@@ -40,6 +40,77 @@
                 </div>
             </div>
         </section>
+        
+        <section class="section video-section">
+            <div class="container">
+                <div class="home-video-container">
+                    <div class="video-carousel">
+                        <button class="carousel-nav prev" id="prevVideo" aria-label="Previous video">‹</button>
+                        
+                        <div class="carousel-track">
+                            <div class="carousel-track-inner" id="carouselTrackInner">
+                                <div class="video-slide">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/FssULNGSZIA" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                
+                                <div class="video-slide">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/XOXY5QrCJ9A" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                
+                                <div class="video-slide">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/7fp4nMlRZ1U" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                
+                                <div class="video-slide">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/Yv1AASJjZRc" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-nav next" id="nextVideo" aria-label="Next video">›</button>
+                    </div>
+                    
+                    <div class="carousel-dots" id="carouselDots">
+                        <button class="dot active" data-index="0" aria-label="Video 1"></button>
+                        <button class="dot" data-index="1" aria-label="Video 2"></button>
+                        <button class="dot" data-index="2" aria-label="Video 3"></button>
+                        <button class="dot" data-index="3" aria-label="Video 4"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -48,5 +119,6 @@
         </div>
     </footer>
     <script src="navigation.js"></script>
+    <script src="video-carousel.js"></script>
 </body>
 </html>

@@ -172,7 +172,7 @@ main {
 .hero {
     background: transparent;
     color: #3d2f2f;
-    padding: 120px 0;
+    padding: 120px 0 20px;
     text-align: center;
 }
 
@@ -207,6 +207,140 @@ main {
     gap: 1rem;
     justify-content: center;
     animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* Home Page Video Section */
+.video-section {
+    padding: 0 0 60px !important;
+}
+
+.home-video-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.video-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    border: 6px solid #8b6f47;
+    box-shadow: 0 8px 24px rgba(93, 74, 47, 0.3);
+}
+
+.carousel-track-inner {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+}
+
+.video-slide {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.video-slide .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-slide .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(139, 111, 71, 0.9);
+    color: #f5e6d3;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(93, 74, 47, 0.4);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 3px 0;
+    font-family: Arial, sans-serif;
+}
+
+.carousel-nav:hover {
+    background: rgba(107, 85, 55, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav.prev {
+    left: -60px;
+}
+
+.carousel-nav.next {
+    right: -60px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d4a574;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: #c99761;
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: #8b6f47;
+    width: 14px;
+    height: 14px;
+}
+
+.home-video-container iframe {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* Buttons */
@@ -1103,7 +1237,7 @@ footer p {
 .video-card {
     background: linear-gradient(145deg, #f5e6d3 0%, #e8dcc8 100%);
     border-radius: 12px;
-    border: 2px solid #d4a574;
+    border: 6px solid #8b6f47;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(93, 74, 47, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1302,6 +1436,39 @@ footer p {
     .hero-buttons {
         flex-direction: column;
     }
+    
+    .video-section {
+        padding: 0 0 40px !important;
+    }
+    
+    .home-video-container {
+        padding: 0 0.5rem;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+        padding-bottom: 2px;
+    }
+    
+    .carousel-nav.prev {
+        left: -45px;
+    }
+    
+    .carousel-nav.next {
+        right: -45px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .dot.active {
+        width: 12px;
+        height: 12px;
+    }
 
     .section-title {
         font-size: 2rem;
@@ -1467,6 +1634,21 @@ footer p {
 
 /* Extra Small Devices */
 @media (max-width: 400px) {
+    .carousel-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 1.8rem;
+        padding-bottom: 2px;
+    }
+    
+    .carousel-nav.prev {
+        left: 5px;
+    }
+    
+    .carousel-nav.next {
+        right: 5px;
+    }
+    
     .metronome-container {
         max-width: calc(100vw - 1.5rem);
         padding: 1.5rem 0.5rem 1.25rem;
