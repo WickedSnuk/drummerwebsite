@@ -592,9 +592,9 @@ footer p {
 
 /* Metronome Styles */
 .metronome-container {
-    max-width: 450px;
+    max-width: 500px;
     margin: 1.5rem auto;
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem 2rem;
     background: linear-gradient(145deg, #f5e6d3 0%, #e8dcc8 100%);
     border-radius: 16px;
     border: 2px solid #d4a574;
@@ -602,12 +602,12 @@ footer p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.5rem;
 }
 
 .beat-indicator {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: linear-gradient(145deg, #8b6f47 0%, #6b5537 100%);
     display: flex;
@@ -617,11 +617,12 @@ footer p {
     position: relative;
     overflow: visible;
     transition: box-shadow 0.1s ease;
+    margin-bottom: 1.5rem;
 }
 
 .beat-light {
-    width: 80px;
-    height: 80px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     background: #5d4a2f;
     display: flex;
@@ -630,7 +631,7 @@ footer p {
 }
 
 .beat-number {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: rgba(245, 230, 211, 0.8);
     user-select: none;
@@ -638,27 +639,28 @@ footer p {
 
 .beat-indicator.active {
     box-shadow: 
-        0 0 20px 8px rgba(244, 197, 66, 0.6),
-        0 0 40px 15px rgba(244, 197, 66, 0.3),
+        0 0 25px 10px rgba(244, 197, 66, 0.6),
+        0 0 50px 20px rgba(244, 197, 66, 0.3),
         0 4px 12px rgba(93, 74, 47, 0.3);
 }
 
 .beat-indicator.accent {
     box-shadow: 
-        0 0 25px 10px rgba(76, 175, 80, 0.7),
-        0 0 50px 20px rgba(76, 175, 80, 0.4),
+        0 0 30px 12px rgba(76, 175, 80, 0.7),
+        0 0 60px 25px rgba(76, 175, 80, 0.4),
         0 4px 12px rgba(93, 74, 47, 0.3);
 }
 
 .bpm-display {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: baseline;
     gap: 0.5rem;
+    margin-bottom: 0.15rem;
 }
 
 .bpm-value {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #8b6f47;
     line-height: 1;
@@ -669,7 +671,7 @@ footer p {
     font-size: 1rem;
     color: #6b5537;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .bpm-controls {
@@ -857,22 +859,31 @@ footer p {
     }
     
     .metronome-container {
-        padding: 1.5rem 1rem;
-        gap: 1.2rem;
+        padding: 2rem 1rem 1.5rem;
+        gap: 0.5rem;
     }
     
     .beat-indicator {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.25rem;
     }
     
     .beat-light {
-        width: 72px;
-        height: 72px;
+        width: 98px;
+        height: 98px;
+    }
+    
+    .beat-number {
+        font-size: 3rem;
     }
     
     .bpm-value {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
+    }
+    
+    .bpm-label {
+        font-size: 0.9rem;
     }
     
     .bpm-controls {
