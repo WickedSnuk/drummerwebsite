@@ -97,6 +97,11 @@ main {
     color: inherit;
     cursor: pointer;
     transition: transform 0.1s ease;
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .logo-link:active {
@@ -149,8 +154,9 @@ main {
 }
 
 .nav-menu a.active {
-    color: #d4a574;
+    color: #f4c542;
     text-decoration: underline;
+    text-decoration-color: #f4c542;
     text-underline-offset: 10px;
 }
 
@@ -228,6 +234,7 @@ main {
     color: #5d4a2f;
     margin-bottom: 2rem;
     font-weight: 500;
+    text-align: justify;
 }
 
 .body-text {
@@ -235,6 +242,7 @@ main {
     line-height: 1.7;
     color: #6b5537;
     margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
 .body-text.emphasis {
@@ -283,11 +291,38 @@ main {
     background: transparent;
 }
 
+.back-btn-img {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    z-index: 99;
+    width: 65px;
+    height: 65px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(2px 2px 4px rgba(93, 74, 47, 0.3));
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: auto;
+}
+
+.back-btn-img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(3px 3px 6px rgba(93, 74, 47, 0.4)) brightness(1.2) saturate(1.3);
+}
+
+.back-btn-img:active {
+    transform: scale(0.95);
+}
+
 .section-title {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    color: #8b6f47;
+    margin-bottom: 2rem;
     text-align: center;
-    color: #5d4a2f;
 }
 
 .section-text {
@@ -304,6 +339,17 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .card {
@@ -325,11 +371,23 @@ main {
     color: #8b6f47;
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.card-icon {
+    height: 120px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(139, 111, 71, 0.3));
 }
 
 .card p {
     color: #6b5537;
     line-height: 1.6;
+    text-align: justify;
 }
 
 /* Contact Form */
