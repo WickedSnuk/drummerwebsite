@@ -5,9 +5,31 @@ class VideoModal {
         this.modalVideo = document.getElementById('modalVideo');
         this.closeBtn = document.getElementById('closeModal');
         this.videoCards = document.querySelectorAll('.video-card');
+        this.collapsibleTitles = document.querySelectorAll('.category-title.collapsible');
         
         this._initializeEventListeners();
+        this._initializeCollapsible();
         this._animateVideosSequentially();
+    }
+    
+    _initializeCollapsible() {
+        this.collapsibleTitles.forEach(title => {
+            title.addEventListener('click', () => {
+                const content = title.nextElementSibling;
+                const icon = title.querySelector('.toggle-icon');
+                
+                // Toggle collapsed state
+                title.classList.toggle('collapsed');
+                content.classList.toggle('collapsed');
+                
+                // Change icon
+                if (content.classList.contains('collapsed')) {
+                    icon.textContent = '+';
+                } else {
+                    icon.textContent = '−';
+                }
+            });
+        });
     }
     
     _animateVideosSequentially() {
